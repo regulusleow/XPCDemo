@@ -1,0 +1,1 @@
+./SMJobBlessUtil.py setreq /Users/jiafengwu/Library/Developer/Xcode/DerivedData/XPCDemo-fqlxsyxysflxsygybvtedkvvsucn/Build/Products/Debug/XPCDemo.app /Users/jiafengwu/Documents/Demo/XPCDemo/XPCDemo/Info.plist /Users/jiafengwu/Documents/Demo/XPCDemo/XPCHelperTool/XPCHelperTool-Info.plist

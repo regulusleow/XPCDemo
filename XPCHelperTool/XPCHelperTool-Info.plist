@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string>com.wjf.XPCHelperTool</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>XPCHelperTool</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>SMAuthorizedClients</key>
+	<array>
+		<string>identifier "com.wjf.XPCDemo" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: wujiafeng@yinxiang.com (3LCZCHHYAL)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+	</array>
+</dict>
+</plist>
