@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F57AD1B926D4DECC000A9BEA"
-               BuildableName = "XPCDemo.app"
-               BlueprintName = "XPCDemo"
-               ReferencedContainer = "container:XPCDemo.xcodeproj">
+               BlueprintIdentifier = "F56CAF7F26EF478800A4C054"
+               BuildableName = "GeneralLibrary.framework"
+               BlueprintName = "GeneralLibrary"
+               ReferencedContainer = "container:GeneralLibrary/GeneralLibrary.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,6 +31,34 @@
                BlueprintIdentifier = "F527A0D626D896CC009F4B5D"
                BuildableName = "com.wjf.XPCHelperTool"
                BlueprintName = "XPCHelperTool"
+               ReferencedContainer = "container:XPCDemo.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F55F74FC26D4F0690020F5D3"
+               BuildableName = "HelperDemo.app"
+               BlueprintName = "HelperDemo"
+               ReferencedContainer = "container:HelperDemo/HelperDemo.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "F57AD1B926D4DECC000A9BEA"
+               BuildableName = "XPCDemo.app"
+               BlueprintName = "XPCDemo"
                ReferencedContainer = "container:XPCDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

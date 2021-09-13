@@ -709,7 +709,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipj-9a-Qgq">
+                            <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" findBarPosition="belowContent" translatesAutoresizingMaskIntoConstraints="NO" id="Ipj-9a-Qgq">
                                 <rect key="frame" x="0.0" y="0.0" width="339" height="270"/>
                                 <clipView key="contentView" drawsBackground="NO" id="Edt-sx-TiL">
                                     <rect key="frame" x="0.0" y="0.0" width="339" height="270"/>
@@ -739,7 +739,7 @@
                                 <rect key="frame" x="339" y="0.0" width="141" height="270"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WZk-XF-24e">
-                                        <rect key="frame" x="9" y="13" width="124" height="32"/>
+                                        <rect key="frame" x="9" y="191" width="124" height="32"/>
                                         <buttonCell key="cell" type="push" title="执行XPCDemo" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="E8v-E6-3vW">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -749,7 +749,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zUI-xL-cZz">
-                                        <rect key="frame" x="9" y="45" width="124" height="32"/>
+                                        <rect key="frame" x="9" y="223" width="124" height="32"/>
                                         <buttonCell key="cell" type="push" title="连接XPCDemo" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aO6-0Y-rXQ">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -758,13 +758,25 @@
                                             <action selector="xpcDemoAction:" target="XfG-lQ-9wD" id="KLT-tI-5Cf"/>
                                         </connections>
                                     </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8aI-R1-uAq">
+                                        <rect key="frame" x="13" y="159" width="116" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Endpoint集合" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eUN-sB-dEw">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="getAllEndpoint:" target="XfG-lQ-9wD" id="yqd-bw-XKf"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="WZk-XF-24e" firstAttribute="centerX" secondItem="v3p-qA-QD5" secondAttribute="centerX" id="0CV-LW-wQ0"/>
+                                    <constraint firstItem="zUI-xL-cZz" firstAttribute="top" secondItem="v3p-qA-QD5" secondAttribute="top" constant="20" symbolic="YES" id="4BM-Tq-YXQ"/>
+                                    <constraint firstItem="8aI-R1-uAq" firstAttribute="centerX" secondItem="v3p-qA-QD5" secondAttribute="centerX" id="6Ol-PZ-nUz"/>
                                     <constraint firstAttribute="width" constant="141" id="QbP-5A-9uZ"/>
-                                    <constraint firstItem="WZk-XF-24e" firstAttribute="top" secondItem="zUI-xL-cZz" secondAttribute="bottom" constant="12" symbolic="YES" id="agy-Ta-gZG"/>
-                                    <constraint firstAttribute="bottom" secondItem="WZk-XF-24e" secondAttribute="bottom" constant="20" symbolic="YES" id="fGy-FV-dIu"/>
-                                    <constraint firstItem="WZk-XF-24e" firstAttribute="centerX" secondItem="v3p-qA-QD5" secondAttribute="centerX" id="kFb-ZP-Sol"/>
-                                    <constraint firstItem="zUI-xL-cZz" firstAttribute="centerX" secondItem="v3p-qA-QD5" secondAttribute="centerX" id="p9S-b2-pJ8"/>
+                                    <constraint firstItem="8aI-R1-uAq" firstAttribute="top" secondItem="WZk-XF-24e" secondAttribute="bottom" constant="12" symbolic="YES" id="WhX-4N-f38"/>
+                                    <constraint firstItem="WZk-XF-24e" firstAttribute="top" secondItem="zUI-xL-cZz" secondAttribute="bottom" constant="12" symbolic="YES" id="XuO-Da-3El"/>
+                                    <constraint firstItem="zUI-xL-cZz" firstAttribute="centerX" secondItem="v3p-qA-QD5" secondAttribute="centerX" id="grc-1V-hAU"/>
                                 </constraints>
                             </customView>
                         </subviews>
@@ -779,6 +791,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="scrollView" destination="Ipj-9a-Qgq" id="JS9-Zy-c6X"/>
                         <outlet property="textView" destination="XQa-zr-51D" id="CT4-E3-j9i"/>
                     </connections>
                 </viewController>

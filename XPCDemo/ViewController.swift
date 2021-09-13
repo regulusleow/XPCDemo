@@ -13,6 +13,7 @@ import GeneralLibrary
 class ViewController: NSViewController {
     
     @IBOutlet var textView: NSTextView!
+    @IBOutlet var demoScrollView: NSScrollView!
     
     private var helperDaemonConnection: NSXPCConnection?
     private var helperConnection: NSXPCConnection?
@@ -28,20 +29,18 @@ class ViewController: NSViewController {
         listener?.delegate = self
         listener?.resume()
         
-        let service = helperDaemonConnection?.remoteObjectProxyWithErrorHandler { [weak self] error in
-            self?.log("remote object proxy error: \(error)")
-        } as? HelperEndpointDaemonProtocol
-        
         if let listener = self.listener {
+            let service = getHelperDaemonConnection()
             service?.setEndpoint(endpoint: listener.endpoint, for: ProcessInfo.processInfo.processIdentifier)
         }
     }
+    
+    override func viewWillAppear() {
+        self.view.window?.title = "Main"
+    }
 
     @IBAction func xpcTest(_ sender: NSButton) {
-        let service = helperDaemonConnection?.remoteObjectProxyWithErrorHandler { [weak self] error in
-            self?.log("remote object proxy error: \(error)")
-        } as? HelperEndpointDaemonProtocol
-        
+        let service = getHelperDaemonConnection()
         service?.upperCase(str: "abcddd") { [weak self] str in
             self?.log(str)
         }
@@ -53,10 +52,7 @@ class ViewController: NSViewController {
             return
         }
         
-        let service = helperDaemonConnection?.remoteObjectProxyWithErrorHandler { [weak self] error in
-            self?.log("helperDaemonConnection ERROR CONNECTING: \(error)")
-        } as? HelperEndpointDaemonProtocol
-        
+        let service = getHelperDaemonConnection()
         service?.getEndpoint(for: runningCapHelperDemo.processIdentifier) { [weak self] endpoint in
             if let helperDemoEndpoint = endpoint {
                 OperationQueue.main.addOperation {
@@ -78,6 +74,13 @@ class ViewController: NSViewController {
         } as? HelperDemoProtocol
         demoService?.helperDemoStr { [weak self] str in
             self?.log(str)
+        }
+    }
+    
+    @IBAction func getEndpointCollection(_ sender: NSButton) {
+        let service = getHelperDaemonConnection()
+        service?.getEndpointCollection { [weak self] in
+            self?.log($0)
         }
     }
     
@@ -190,8 +193,20 @@ extension ViewController {
 // MARK: - utils
 extension ViewController {
     func log(_ message: String) {
-        OperationQueue.main.addOperation {
+        OperationQueue.main.addOperation { [weak self] in
+            guard let self = self else {
+                return
+            }
             self.textView.string = self.textView.string + "\(message)\n"
+            self.demoScrollView.documentView?.scrollToEndOfDocument(nil)
         }
+    }
+    
+    func getHelperDaemonConnection() -> HelperEndpointDaemonProtocol? {
+        let service = helperDaemonConnection?.remoteObjectProxyWithErrorHandler { [weak self] error in
+            self?.log("helperDaemonConnection ERROR CONNECTING: \(error)")
+        } as? HelperEndpointDaemonProtocol
+        
+        return service
     }
 }

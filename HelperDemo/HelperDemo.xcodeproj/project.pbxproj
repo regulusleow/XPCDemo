@@ -11,7 +11,6 @@
 		F55F750326D4F0690020F5D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55F750226D4F0690020F5D3 /* ViewController.swift */; };
 		F55F750526D4F06A0020F5D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55F750426D4F06A0020F5D3 /* Assets.xcassets */; };
 		F55F750826D4F06A0020F5D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F55F750626D4F06A0020F5D3 /* Main.storyboard */; };
-		F56CAF6526EF301900A4C054 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F56CAF6426EF301900A4C054 /* ServiceManagement.framework */; };
 		F5D2421F26EF4904006D0694 /* GeneralLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D2421E26EF4904006D0694 /* GeneralLibrary.framework */; };
 		F5D2422026EF4904006D0694 /* GeneralLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5D2421E26EF4904006D0694 /* GeneralLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5D2422226EF490B006D0694 /* GeneralLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D2421E26EF4904006D0694 /* GeneralLibrary.framework */; };
@@ -48,7 +47,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F56CAF6526EF301900A4C054 /* ServiceManagement.framework in Frameworks */,
 				F5D2421F26EF4904006D0694 /* GeneralLibrary.framework in Frameworks */,
 				F5D2422226EF490B006D0694 /* GeneralLibrary.framework in Frameworks */,
 			);

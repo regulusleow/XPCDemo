@@ -12,4 +12,5 @@ import Foundation
     func checkDaemonPluse(_ reply: @escaping () -> Void)
     func setEndpoint(endpoint: NSXPCListenerEndpoint, for PID: Int32)
     func getEndpoint(for PID: Int32, reply: @escaping (NSXPCListenerEndpoint?) -> Void)
+    func getEndpointCollection(reply: @escaping (String) -> Void)
 }

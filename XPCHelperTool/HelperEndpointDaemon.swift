@@ -5,7 +5,7 @@
 //  Created by jiafeng wu on 2021/8/27.
 //
 
-import Foundation
+import Cocoa
 
 class HelperEndpointDaemon: NSObject {
     private var daemonListener: NSXPCListener?
@@ -43,10 +43,34 @@ extension HelperEndpointDaemon: HelperEndpointDaemonProtocol {
     }
     
     func setEndpoint(endpoint: NSXPCListenerEndpoint, for PID: Int32) {
+        if endpointDict.count > 2 {
+            filterEndpoint()
+        }
         endpointDict[PID] = endpoint
     }
     
     func getEndpoint(for PID: Int32, reply: @escaping (NSXPCListenerEndpoint?) -> Void) {
         reply(endpointDict[PID])
+    }
+    
+    func getEndpointCollection(reply: @escaping (String) -> Void) {
+        reply(endpointDict.description)
+    }
+}
+
+extension HelperEndpointDaemon {
+    func filterEndpoint() {
+        let runningCapDemo = NSRunningApplication.runningApplications(withBundleIdentifier: "com.wjf.XPCDemo").first
+        let runningCapHelperDemo = NSRunningApplication.runningApplications(withBundleIdentifier: "com.wjf.HelperDemo").first
+        
+        var dict = [Int32: NSXPCListenerEndpoint]()
+        if let demoPID = runningCapDemo?.processIdentifier {
+            dict[demoPID] = endpointDict[demoPID]
+        }
+        if let helperDemoPID = runningCapHelperDemo?.processIdentifier {
+            dict[helperDemoPID] = endpointDict[helperDemoPID]
+        }
+        
+        endpointDict = dict
     }
 }
