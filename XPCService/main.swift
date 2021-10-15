@@ -7,3 +7,5 @@
 
 import Foundation
 
+let service = XPCService()
+service.run()

@@ -10,12 +10,11 @@
 		F5208F2F26D89308005B69D5 /* HelperDemo.app in Resources */ = {isa = PBXBuildFile; fileRef = F5208F2E26D89308005B69D5 /* HelperDemo.app */; };
 		F5208F3026D89360005B69D5 /* HelperDemo.app in Resources */ = {isa = PBXBuildFile; fileRef = F5208F2E26D89308005B69D5 /* HelperDemo.app */; };
 		F520D31C27196F9D0046199A /* com.wjf.XPCHelperTool in CopyFiles */ = {isa = PBXBuildFile; fileRef = F527A0D726D896CC009F4B5D /* com.wjf.XPCHelperTool */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		F520D32327196FB80046199A /* XPCService.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = F57AD1D126D4DEFE000A9BEA /* XPCService.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F520D32327196FB80046199A /* com.wjf.XPCService.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = F57AD1D126D4DEFE000A9BEA /* com.wjf.XPCService.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F527A0BA26D89581009F4B5D /* XPCHelperTool-Launchd.plist in Resources */ = {isa = PBXBuildFile; fileRef = F527A0B926D89581009F4B5D /* XPCHelperTool-Launchd.plist */; };
 		F527A0DA26D896CC009F4B5D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F527A0D926D896CC009F4B5D /* main.swift */; };
 		F574849C26D7CAF6009B2B62 /* XPCServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F574849B26D7CAF6009B2B62 /* XPCServiceProtocol.swift */; };
 		F574849E26D7CB6B009B2B62 /* XPCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F574849D26D7CB6B009B2B62 /* XPCService.swift */; };
-		F57484A026D7CC82009B2B62 /* XPCServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F574849F26D7CC82009B2B62 /* XPCServiceDelegate.swift */; };
 		F57484A226D7CE79009B2B62 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57484A126D7CE79009B2B62 /* main.swift */; };
 		F57AD1BE26D4DECC000A9BEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57AD1BD26D4DECC000A9BEA /* AppDelegate.swift */; };
 		F57AD1C026D4DECC000A9BEA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57AD1BF26D4DECC000A9BEA /* ViewController.swift */; };
@@ -63,7 +62,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
 			dstSubfolderSpec = 16;
 			files = (
-				F520D32327196FB80046199A /* XPCService.xpc in Embed XPC Services */,
+				F520D32327196FB80046199A /* com.wjf.XPCService.xpc in Embed XPC Services */,
 			);
 			name = "Embed XPC Services";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,7 +96,6 @@
 		F527A0D926D896CC009F4B5D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F574849B26D7CAF6009B2B62 /* XPCServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPCServiceProtocol.swift; sourceTree = "<group>"; };
 		F574849D26D7CB6B009B2B62 /* XPCService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPCService.swift; sourceTree = "<group>"; };
-		F574849F26D7CC82009B2B62 /* XPCServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPCServiceDelegate.swift; sourceTree = "<group>"; };
 		F57484A126D7CE79009B2B62 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		F57AD1BA26D4DECC000A9BEA /* XPCDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XPCDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F57AD1BD26D4DECC000A9BEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,7 +104,7 @@
 		F57AD1C426D4DECD000A9BEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F57AD1C626D4DECD000A9BEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F57AD1C726D4DECD000A9BEA /* XPCDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XPCDemo.entitlements; sourceTree = "<group>"; };
-		F57AD1D126D4DEFE000A9BEA /* XPCService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = XPCService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
+		F57AD1D126D4DEFE000A9BEA /* com.wjf.XPCService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = com.wjf.XPCService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
 		F57AD1D926D4DEFE000A9BEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F58A3DA426D8C72000376D19 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		F58A3DA626D8CA3F00376D19 /* HelperEndpointDaemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperEndpointDaemon.swift; sourceTree = "<group>"; };
@@ -185,7 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				F57AD1BA26D4DECC000A9BEA /* XPCDemo.app */,
-				F57AD1D126D4DEFE000A9BEA /* XPCService.xpc */,
+				F57AD1D126D4DEFE000A9BEA /* com.wjf.XPCService.xpc */,
 				F527A0D726D896CC009F4B5D /* com.wjf.XPCHelperTool */,
 			);
 			name = Products;
@@ -209,7 +207,6 @@
 			children = (
 				F58A3DAE26D8D38400376D19 /* XPCService.entitlements */,
 				F574849B26D7CAF6009B2B62 /* XPCServiceProtocol.swift */,
-				F574849F26D7CC82009B2B62 /* XPCServiceDelegate.swift */,
 				F574849D26D7CB6B009B2B62 /* XPCService.swift */,
 				F57484A126D7CE79009B2B62 /* main.swift */,
 				F57AD1D926D4DEFE000A9BEA /* Info.plist */,
@@ -273,7 +270,7 @@
 			);
 			name = XPCService;
 			productName = XPCService;
-			productReference = F57AD1D126D4DEFE000A9BEA /* XPCService.xpc */;
+			productReference = F57AD1D126D4DEFE000A9BEA /* com.wjf.XPCService.xpc */;
 			productType = "com.apple.product-type.xpc-service";
 		};
 /* End PBXNativeTarget section */
@@ -364,7 +361,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F57484A026D7CC82009B2B62 /* XPCServiceDelegate.swift in Sources */,
 				F574849C26D7CAF6009B2B62 /* XPCServiceProtocol.swift in Sources */,
 				F57484A226D7CE79009B2B62 /* main.swift in Sources */,
 				F574849E26D7CB6B009B2B62 /* XPCService.swift in Sources */,
@@ -630,7 +626,7 @@
 					"@loader_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wjf.XPCService;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = com.wjf.XPCService;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -653,7 +649,7 @@
 					"@loader_path/../Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wjf.XPCService;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = com.wjf.XPCService;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};

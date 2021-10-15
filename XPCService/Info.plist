@@ -20,6 +20,11 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>SMPrivilegedExecutables</key>
+	<dict>
+		<key>com.wjf.XPCHelperTool</key>
+		<string>identifier "com.wjf.XPCHelperTool" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: wujiafeng@yinxiang.com (3LCZCHHYAL)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+	</dict>
 	<key>XPCService</key>
 	<dict>
 		<key>JoinExistingSession</key>

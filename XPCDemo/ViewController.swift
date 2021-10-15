@@ -9,30 +9,20 @@ import Cocoa
 import ServiceManagement
 import com_wjf_XPCHelperTool
 import GeneralLibrary
+import com_wjf_XPCService
 
 class ViewController: NSViewController {
     
     @IBOutlet var textView: NSTextView!
     @IBOutlet var demoScrollView: NSScrollView!
     
-    private var helperDaemonConnection: NSXPCConnection?
     private var helperConnection: NSXPCConnection?
-    private var listener: NSXPCListener?
-    private var authRef: AuthorizationRef?
+    private var xpcConnection: NSXPCConnection?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        connectToDaemon()
-        
-        listener = NSXPCListener.anonymous()
-        listener?.delegate = self
-        listener?.resume()
-        
-        if let listener = self.listener {
-            let service = getHelperDaemonConnection()
-            service?.setEndpoint(endpoint: listener.endpoint, for: ProcessInfo.processInfo.processIdentifier)
-        }
+        connectXPCService()
     }
     
     override func viewWillAppear() {
@@ -40,7 +30,7 @@ class ViewController: NSViewController {
     }
 
     @IBAction func xpcTest(_ sender: NSButton) {
-        let service = getHelperDaemonConnection()
+        let service = getXPCConnection()
         service?.upperCase(str: "abcddd") { [weak self] str in
             self?.log(str)
         }
@@ -52,16 +42,8 @@ class ViewController: NSViewController {
             return
         }
         
-        let service = getHelperDaemonConnection()
-        service?.getEndpoint(for: runningCapHelperDemo.processIdentifier) { [weak self] endpoint in
-            if let helperDemoEndpoint = endpoint {
-                OperationQueue.main.addOperation {
-                    self?.helperDemoConnection(with: helperDemoEndpoint)
-                }
-            } else {
-                self?.log("helperDemoEndpoint is nil")
-            }
-        }
+        let service = getXPCConnection()
+        service?.connectHelperApp(for: runningCapHelperDemo.processIdentifier)
     }
     
     @IBAction func helperDemoAction(_ sender: NSButton) {
@@ -78,114 +60,43 @@ class ViewController: NSViewController {
     }
     
     @IBAction func getEndpointCollection(_ sender: NSButton) {
-        let service = getHelperDaemonConnection()
+        let service = getXPCConnection()
         service?.getEndpointCollection { [weak self] in
             self?.log($0)
         }
     }
     
     @IBAction func installAction(_ sender: NSButton) {
-        launchDaemon()
-    }
-}
-
-// MARK: - NSXPCListenerDelegate
-extension ViewController: NSXPCListenerDelegate {
-    func listener(_ listener: NSXPCListener, shouldAcceptNewConnection newConnection: NSXPCConnection) -> Bool {
-        newConnection.remoteObjectInterface = NSXPCInterface(with: HelperDemoProtocol.self)
-        newConnection.exportedInterface = NSXPCInterface(with: DemoProtocol.self)
-        newConnection.exportedObject = DemoService()
-        newConnection.resume()
+        if xpcConnection == nil {
+            connectXPCService()
+        }
+        let service = xpcConnection?.remoteObjectProxyWithErrorHandler { error in
+            print(error)
+        } as? XPCServiceProtocol
         
-        return true
-    }
-}
-
-// MARK: - launch helper app
-extension ViewController {
-    func launchHelper() {
-        let url = Bundle.main.bundleURL.deletingLastPathComponent().appendingPathComponent("HelperDemo.app", isDirectory: false)
-        let configuration = NSWorkspace.OpenConfiguration()
-        NSWorkspace.shared.openApplication(at: url, configuration: configuration) { [weak self] _, error in
-            if let error = error {
-                self?.log("launch helper app error: \(error)")
+        service?.installHelperTool { success in
+            if success {
+                self.log("安装成功")
+            } else {
+                self.log("安装失败")
             }
         }
     }
 }
 
 extension ViewController {
-    func launchDaemonIfItIsNotRunning() {
-        let service = helperDaemonConnection?.remoteObjectProxyWithErrorHandler { [weak self] error in
-            self?.log("remote object proxy error: \(error)")
-            self?.launchDaemon()
-        } as? HelperEndpointDaemonProtocol
-        
-        service?.checkDaemonPluse { [weak self] in
-            OperationQueue.main.addOperation {
-                self?.launchHelper()
+    func connectXPCService() {
+        if xpcConnection == nil {
+            xpcConnection = NSXPCConnection(serviceName: "com.wjf.XPCService")
+            xpcConnection?.remoteObjectInterface = NSXPCInterface(with: XPCServiceProtocol.self)
+            xpcConnection?.invalidationHandler = {
+                self.xpcConnection?.invalidationHandler = nil
+                OperationQueue.main.addOperation {
+                    self.xpcConnection = nil
+                    print("connection invalidated")
+                }
             }
-        }
-    }
-    
-    func connectToDaemon() {
-        helperDaemonConnection = NSXPCConnection(machServiceName: "com.wjf.XPCHelperTool", options: .privileged)
-        helperDaemonConnection?.remoteObjectInterface = NSXPCInterface(with: HelperEndpointDaemonProtocol.self)
-        
-        helperDaemonConnection?.invalidationHandler = { [weak self] in
-            self?.helperDaemonConnection?.invalidationHandler = nil
-            OperationQueue.main.addOperation {
-                self?.helperDaemonConnection = nil
-            }
-            self?.log("CONNECTION INVALIDATED")
-        }
-        helperDaemonConnection?.interruptionHandler = { [weak self] in
-            self?.log("INTERRUIPTED CONNECTION!")
-        }
-        helperDaemonConnection?.resume()
-        
-        launchDaemonIfItIsNotRunning()
-    }
-    
-    func launchDaemon() {
-        let status = AuthorizationCreate(nil, nil, [.preAuthorize, .interactionAllowed, .extendRights], &authRef)
-        if status != errAuthorizationSuccess {
-            log("Failed to create AuthorizationRef, return code \(status)")
-            return
-        } else {
-            log("SUCCESS AUTHORIZING DAEMON")
-        }
-        
-        var error: Unmanaged<CFError>?
-        let success = SMJobBless(kSMDomainSystemLaunchd, "com.wjf.XPCHelperTool" as CFString, authRef, &error)
-        if success {
-            log("SUCCESSFULLY LAUNCHED DAEMON")
-            connectToDaemon()
-        } else {
-            log("job bless error: \(error.debugDescription)")
-        }
-    }
-    
-    func helperDemoConnection(with endpoint: NSXPCListenerEndpoint) {
-        helperConnection = NSXPCConnection(listenerEndpoint: endpoint)
-        helperConnection?.remoteObjectInterface = NSXPCInterface(with: HelperDemoProtocol.self)
-        helperConnection?.invalidationHandler = { [weak self] in
-            self?.helperConnection?.invalidationHandler = nil
-            OperationQueue.main.addOperation {
-                self?.helperConnection = nil
-            }
-            self?.log("helperConnection CONNECTION INVALIDATED")
-        }
-        helperConnection?.interruptionHandler = { [weak self] in
-            self?.log("helperConnection INTERRUIPTED CONNECTION")
-        }
-        helperConnection?.resume()
-        
-        let service = helperConnection?.remoteObjectProxyWithErrorHandler { [weak self] error in
-            self?.log("连接 HelperDemo 失败: \(error)")
-        } as? HelperDemoProtocol
-        service?.checkHelperDemoConnection { [weak self] result in
-            self?.log(result)
+            xpcConnection?.resume()
         }
     }
 }
@@ -202,11 +113,13 @@ extension ViewController {
         }
     }
     
-    func getHelperDaemonConnection() -> HelperEndpointDaemonProtocol? {
-        let service = helperDaemonConnection?.remoteObjectProxyWithErrorHandler { [weak self] error in
-            self?.log("helperDaemonConnection ERROR CONNECTING: \(error)")
-        } as? HelperEndpointDaemonProtocol
-        
+    func getXPCConnection() -> XPCServiceProtocol? {
+        guard let xpcConnection = self.xpcConnection else {
+            return nil
+        }
+        let service = xpcConnection.remoteObjectProxyWithErrorHandler { error in
+            print("remote object proxy error: \(error)")
+        } as? XPCServiceProtocol
         return service
     }
 }
