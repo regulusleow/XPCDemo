@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F5208F2F26D89308005B69D5 /* HelperDemo.app in Resources */ = {isa = PBXBuildFile; fileRef = F5208F2E26D89308005B69D5 /* HelperDemo.app */; };
 		F5208F3026D89360005B69D5 /* HelperDemo.app in Resources */ = {isa = PBXBuildFile; fileRef = F5208F2E26D89308005B69D5 /* HelperDemo.app */; };
+		F520D31C27196F9D0046199A /* com.wjf.XPCHelperTool in CopyFiles */ = {isa = PBXBuildFile; fileRef = F527A0D726D896CC009F4B5D /* com.wjf.XPCHelperTool */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		F520D32327196FB80046199A /* XPCService.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = F57AD1D126D4DEFE000A9BEA /* XPCService.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		F527A0BA26D89581009F4B5D /* XPCHelperTool-Launchd.plist in Resources */ = {isa = PBXBuildFile; fileRef = F527A0B926D89581009F4B5D /* XPCHelperTool-Launchd.plist */; };
 		F527A0DA26D896CC009F4B5D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F527A0D926D896CC009F4B5D /* main.swift */; };
 		F574849C26D7CAF6009B2B62 /* XPCServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F574849B26D7CAF6009B2B62 /* XPCServiceProtocol.swift */; };
@@ -19,7 +21,6 @@
 		F57AD1C026D4DECC000A9BEA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57AD1BF26D4DECC000A9BEA /* ViewController.swift */; };
 		F57AD1C226D4DECD000A9BEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F57AD1C126D4DECD000A9BEA /* Assets.xcassets */; };
 		F57AD1C526D4DECD000A9BEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F57AD1C326D4DECD000A9BEA /* Main.storyboard */; };
-		F58A3DA326D8B98A00376D19 /* com.wjf.XPCHelperTool in CopyFiles */ = {isa = PBXBuildFile; fileRef = F527A0D726D896CC009F4B5D /* com.wjf.XPCHelperTool */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		F58A3DA526D8C72000376D19 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58A3DA426D8C72000376D19 /* ServiceManagement.framework */; };
 		F58A3DAB26D8CB7D00376D19 /* HelperEndpointDaemonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58A3DAA26D8CB7D00376D19 /* HelperEndpointDaemonProtocol.swift */; };
 		F58A3DAC26D8CBC100376D19 /* HelperEndpointDaemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58A3DA626D8CA3F00376D19 /* HelperEndpointDaemon.swift */; };
@@ -28,7 +29,45 @@
 		F5D2422526EF4915006D0694 /* GeneralLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5D2422326EF4915006D0694 /* GeneralLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F520D31F27196FAD0046199A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F57AD1B226D4DECC000A9BEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F527A0D626D896CC009F4B5D;
+			remoteInfo = XPCHelperTool;
+		};
+		F520D32127196FB10046199A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F57AD1B226D4DECC000A9BEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F57AD1D026D4DEFE000A9BEA;
+			remoteInfo = XPCService;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
+		F520D31B27196F950046199A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LaunchServices;
+			dstSubfolderSpec = 1;
+			files = (
+				F520D31C27196F9D0046199A /* com.wjf.XPCHelperTool in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F520D32627196FB80046199A /* Embed XPC Services */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+				F520D32327196FB80046199A /* XPCService.xpc in Embed XPC Services */,
+			);
+			name = "Embed XPC Services";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F527A0D526D896CC009F4B5D /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -37,16 +76,6 @@
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
-		};
-		F58A3DA226D8B97900376D19 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = Contents/Library/LaunchServices;
-			dstSubfolderSpec = 1;
-			files = (
-				F58A3DA326D8B98A00376D19 /* com.wjf.XPCHelperTool in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F5D2422626EF4915006D0694 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -215,12 +244,13 @@
 				F57AD1B626D4DECC000A9BEA /* Sources */,
 				F57AD1B726D4DECC000A9BEA /* Frameworks */,
 				F57AD1B826D4DECC000A9BEA /* Resources */,
-				F58A3DA226D8B97900376D19 /* CopyFiles */,
 				F5D2422626EF4915006D0694 /* Embed Frameworks */,
+				F520D32627196FB80046199A /* Embed XPC Services */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F520D32227196FB10046199A /* PBXTargetDependency */,
 			);
 			name = XPCDemo;
 			productName = XPCDemo;
@@ -234,10 +264,12 @@
 				F57AD1CD26D4DEFE000A9BEA /* Sources */,
 				F57AD1CE26D4DEFE000A9BEA /* Frameworks */,
 				F57AD1CF26D4DEFE000A9BEA /* Resources */,
+				F520D31B27196F950046199A /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F520D32027196FAD0046199A /* PBXTargetDependency */,
 			);
 			name = XPCService;
 			productName = XPCService;
@@ -340,6 +372,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F520D32027196FAD0046199A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F527A0D626D896CC009F4B5D /* XPCHelperTool */;
+			targetProxy = F520D31F27196FAD0046199A /* PBXContainerItemProxy */;
+		};
+		F520D32227196FB10046199A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F57AD1D026D4DEFE000A9BEA /* XPCService */;
+			targetProxy = F520D32127196FB10046199A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F57AD1C326D4DECD000A9BEA /* Main.storyboard */ = {
