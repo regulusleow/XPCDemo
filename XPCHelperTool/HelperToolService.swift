@@ -8,17 +8,18 @@
 import Cocoa
 
 class HelperToolService: NSObject {
-    private var daemonListener: NSXPCListener?
-    private var endpointDict = [Int32: NSXPCListenerEndpoint]()
+    private var listener: NSXPCListener?
+    private var mainAppEndpoint: NSXPCListenerEndpoint?
+    private var helperAppEndpoint: NSXPCListenerEndpoint?
     
     override init() {
         super.init()
-        self.daemonListener = NSXPCListener(machServiceName: "com.wjf.XPCHelperTool")
-        self.daemonListener?.delegate = self
+        self.listener = NSXPCListener(machServiceName: "com.wjf.XPCHelperTool")
+        self.listener?.delegate = self
     }
     
     func run() {
-        self.daemonListener?.resume()
+        self.listener?.resume()
         RunLoop.current.run()
     }
 }
@@ -33,44 +34,23 @@ extension HelperToolService: NSXPCListenerDelegate {
 }
 
 extension HelperToolService: HelperToolProtocol {
-    func upperCase(str: String, reply: (String) -> Void) {
-        let result = str.uppercased()
-        reply(result)
-    }
-    
     func checkDaemonPluse(_ reply: @escaping () -> Void) {
         reply()
     }
     
-    func setEndpoint(endpoint: NSXPCListenerEndpoint, for PID: Int32) {
-        if endpointDict.count > 2 {
-            filterEndpoint()
-        }
-        endpointDict[PID] = endpoint
+    func setMainAppEndpoint(_ endpoint: NSXPCListenerEndpoint?) {
+        mainAppEndpoint = endpoint
     }
     
-    func getEndpoint(for PID: Int32, reply: @escaping (NSXPCListenerEndpoint?) -> Void) {
-        reply(endpointDict[PID])
+    func getMainAppEndpoint(_ reply: @escaping (NSXPCListenerEndpoint?) -> Void) {
+        reply(mainAppEndpoint)
     }
     
-    func getEndpointCollection(reply: @escaping (String) -> Void) {
-        reply(endpointDict.description)
+    func setHelperAppEndpoint(_ endpoint: NSXPCListenerEndpoint?) {
+        helperAppEndpoint = endpoint
     }
-}
-
-extension HelperToolService {
-    func filterEndpoint() {
-        let runningCapDemo = NSRunningApplication.runningApplications(withBundleIdentifier: "com.wjf.XPCDemo").first
-        let runningCapHelperDemo = NSRunningApplication.runningApplications(withBundleIdentifier: "com.wjf.HelperDemo").first
-        
-        var dict = [Int32: NSXPCListenerEndpoint]()
-        if let demoPID = runningCapDemo?.processIdentifier {
-            dict[demoPID] = endpointDict[demoPID]
-        }
-        if let helperDemoPID = runningCapHelperDemo?.processIdentifier {
-            dict[helperDemoPID] = endpointDict[helperDemoPID]
-        }
-        
-        endpointDict = dict
+    
+    func getHelperAppEndpoint(_ reply: @escaping (NSXPCListenerEndpoint?) -> Void) {
+        reply(helperAppEndpoint)
     }
 }

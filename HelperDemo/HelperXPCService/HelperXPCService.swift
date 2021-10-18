@@ -43,23 +43,16 @@ extension HelperXPCService: HelperXPCServiceProtocol {
         reply(str.uppercased())
     }
     
-    func getMainAppEndpoint(for PID: Int32, reply: @escaping (NSXPCListenerEndpoint?) -> Void) {
+    func getMainAppEndpoint(reply: @escaping (NSXPCListenerEndpoint?) -> Void) {
         let service = getHelperToolConnection()
-        service?.getEndpoint(for: PID) { endpoint in
-            reply(endpoint)
-        }
-    }
-    
-    func setEndpoint(endpoint: NSXPCListenerEndpoint, for PID: Int32) {
-        let service = getHelperToolConnection()
-        service?.setEndpoint(endpoint: endpoint, for: PID)
-    }
-    
-    func getEndpointCollection(reply: @escaping (String) -> Void) {
-        let service = getHelperToolConnection()
-        service?.getEndpointCollection {
+        service?.getMainAppEndpoint {
             reply($0)
         }
+    }
+    
+    func setEndpoint(endpoint: NSXPCListenerEndpoint) {
+        let service = getHelperToolConnection()
+        service?.setHelperAppEndpoint(endpoint)
     }
 }
 

@@ -30,7 +30,7 @@ class ViewController: NSViewController {
 
         if let listener = self.listener {
             let service = getXPCConnection()
-            service?.setEndpoint(endpoint: listener.endpoint, for: ProcessInfo.processInfo.processIdentifier)
+            service?.setEndpoint(endpoint: listener.endpoint)
         }
     }
     
@@ -52,25 +52,13 @@ class ViewController: NSViewController {
     }
     
     @IBAction func mainAppConnectAction(_ sender: NSButton) {
-        guard let runningCapDemo = NSRunningApplication.runningApplications(withBundleIdentifier: "com.wjf.XPCDemo").first else {
-            log("main app 未启动")
-            return
-        }
-        
         let service = getXPCConnection()
-        service?.getMainAppEndpoint(for: runningCapDemo.processIdentifier) { [weak self] endpoint in
+        service?.getMainAppEndpoint { [weak self] endpoint in
             guard let endpoint = endpoint else {
                 self?.log("EndPoint 不存在")
                 return
             }
             self?.mainAppConnect(with: endpoint)
-        }
-    }
-    
-    @IBAction func getAllEndpoint(_ sender: NSButton) {
-        let service = getXPCConnection()
-        service?.getEndpointCollection { [weak self] in
-            self?.log($0)
         }
     }
 }

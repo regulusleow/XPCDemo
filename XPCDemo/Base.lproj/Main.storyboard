@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -739,10 +739,10 @@
                                 <rect key="frame" x="339" y="0.0" width="141" height="270"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bQm-po-RXZ">
-                                        <rect key="frame" x="2" y="223" width="138" height="32"/>
-                                        <buttonCell key="cell" type="push" title="连接HelperDemo" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="YfB-Eu-9I1">
+                                        <rect key="frame" x="5" y="223" width="131" height="32"/>
+                                        <buttonCell key="cell" type="push" title="连接Helper App" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="YfB-Eu-9I1">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" size="13" name=".PingFangSC-Regular"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="helperConnection:" target="XfG-lQ-9wD" id="yq2-ip-Eiu"/>
@@ -759,46 +759,22 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pio-Kg-ee0">
-                                        <rect key="frame" x="2" y="191" width="138" height="32"/>
-                                        <buttonCell key="cell" type="push" title="执行HelperDemo" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wxm-ry-tE7">
+                                        <rect key="frame" x="5" y="191" width="131" height="32"/>
+                                        <buttonCell key="cell" type="push" title="执行Helper App" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wxm-ry-tE7">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" size="13" name=".PingFangSC-Regular"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="helperDemoAction:" target="XfG-lQ-9wD" id="7HT-qi-s2i"/>
                                         </connections>
                                     </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pW6-lp-Dx4">
-                                        <rect key="frame" x="3" y="45" width="136" height="32"/>
-                                        <buttonCell key="cell" type="push" title="XPCService 测试" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="C2K-0t-9YY">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="xpcTest:" target="XfG-lQ-9wD" id="YNx-MI-kik"/>
-                                        </connections>
-                                    </button>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CPZ-Kt-IK0">
-                                        <rect key="frame" x="13" y="159" width="116" height="32"/>
-                                        <buttonCell key="cell" type="push" title="Endpoint集合" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jW8-yv-8Ap">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="getEndpointCollection:" target="XfG-lQ-9wD" id="L4d-iq-PfX"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="bQm-po-RXZ" firstAttribute="top" secondItem="dE1-Qp-EnQ" secondAttribute="top" constant="20" symbolic="YES" id="0zV-xj-zNG"/>
-                                    <constraint firstItem="CPZ-Kt-IK0" firstAttribute="centerX" secondItem="dE1-Qp-EnQ" secondAttribute="centerX" id="1Nb-m5-Cen"/>
                                     <constraint firstItem="4PA-yo-An3" firstAttribute="centerX" secondItem="dE1-Qp-EnQ" secondAttribute="centerX" id="9JI-Os-exv"/>
                                     <constraint firstItem="bQm-po-RXZ" firstAttribute="centerX" secondItem="dE1-Qp-EnQ" secondAttribute="centerX" id="FEf-g8-gWX"/>
-                                    <constraint firstItem="4PA-yo-An3" firstAttribute="top" secondItem="pW6-lp-Dx4" secondAttribute="bottom" constant="12" symbolic="YES" id="ISD-Ri-WVV"/>
                                     <constraint firstItem="Pio-Kg-ee0" firstAttribute="centerX" secondItem="dE1-Qp-EnQ" secondAttribute="centerX" id="L1V-sX-kOw"/>
                                     <constraint firstItem="Pio-Kg-ee0" firstAttribute="top" secondItem="bQm-po-RXZ" secondAttribute="bottom" constant="12" symbolic="YES" id="PcJ-dN-2az"/>
-                                    <constraint firstItem="CPZ-Kt-IK0" firstAttribute="top" secondItem="Pio-Kg-ee0" secondAttribute="bottom" constant="12" symbolic="YES" id="kex-WP-CcL"/>
-                                    <constraint firstItem="pW6-lp-Dx4" firstAttribute="centerX" secondItem="dE1-Qp-EnQ" secondAttribute="centerX" id="lLY-tt-NST"/>
                                     <constraint firstAttribute="width" constant="141" id="sNb-tC-Q9b"/>
                                     <constraint firstAttribute="bottom" secondItem="4PA-yo-An3" secondAttribute="bottom" constant="20" symbolic="YES" id="tcf-8Q-1Sb"/>
                                 </constraints>

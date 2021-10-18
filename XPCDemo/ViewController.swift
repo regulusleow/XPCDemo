@@ -31,29 +31,17 @@ class ViewController: NSViewController {
         
         if let listener = self.listener {
             let service = getXPCConnection()
-            service?.setEndpoint(endpoint: listener.endpoint, for: ProcessInfo.processInfo.processIdentifier)
+            service?.setEndpoint(endpoint: listener.endpoint)
         }
     }
     
     override func viewWillAppear() {
         self.view.window?.title = "Main"
     }
-
-    @IBAction func xpcTest(_ sender: NSButton) {
-        let service = getXPCConnection()
-        service?.upperCase(str: "abcddd") { [weak self] str in
-            self?.log(str)
-        }
-    }
     
     @IBAction func helperConnection(_ sender: NSButton) {
-        guard let runningCapHelperDemo = NSRunningApplication.runningApplications(withBundleIdentifier: "com.wjf.HelperDemo").first else {
-            log("HelperDemo 未启动")
-            return
-        }
-        
         let service = getXPCConnection()
-        service?.getHelperAppEndpoint(for: runningCapHelperDemo.processIdentifier) { [weak self] endpoint in
+        service?.getHelperAppEndpoint { [weak self] endpoint in
             guard let endpoint = endpoint else {
                 self?.log("EndPoint 不存在")
                 return
@@ -64,7 +52,7 @@ class ViewController: NSViewController {
     
     @IBAction func helperDemoAction(_ sender: NSButton) {
         guard let helperAppConnection = self.helperAppConnection else {
-            log("demoConnection is nil")
+            log("helper connection is nil")
             return
         }
         let demoService = helperAppConnection.remoteObjectProxyWithErrorHandler { [weak self] error in
@@ -72,13 +60,6 @@ class ViewController: NSViewController {
         } as? HelperDemoProtocol
         demoService?.helperDemoStr { [weak self] str in
             self?.log(str)
-        }
-    }
-    
-    @IBAction func getEndpointCollection(_ sender: NSButton) {
-        let service = getXPCConnection()
-        service?.getEndpointCollection { [weak self] in
-            self?.log($0)
         }
     }
     
@@ -127,7 +108,7 @@ extension ViewController {
         helperAppConnection?.resume()
         
         let service = helperAppConnection?.remoteObjectProxyWithErrorHandler { [weak self] error in
-            self?.log("连接 HelperDemo 失败: \(error)")
+            self?.log("连接 helper app 失败: \(error)")
         } as? HelperDemoProtocol
         service?.checkHelperDemoConnection { [weak self] result in
             self?.log(result)

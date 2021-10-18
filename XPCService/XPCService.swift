@@ -15,6 +15,7 @@ class XPCService: NSObject {
     private var listener: NSXPCListener?
     private var authorization: Data?
     private var helperToolConnection: NSXPCConnection?
+    private var helperToolEndpoint: NSXPCListenerEndpoint?
     private var authRef: AuthorizationRef?
     
     override init() {
@@ -45,13 +46,6 @@ extension XPCService: NSXPCListenerDelegate {
 // MARK: - XPCServiceProtocol
 
 extension XPCService: XPCServiceProtocol {
-    func upperCase(str: String, reply: @escaping (String) -> Void) {
-        let service = getHelperToolConnection()
-        service?.upperCase(str: str) {
-            reply($0)
-        }
-    }
-    
     func installHelperTool(reply: @escaping (Bool) -> Void) {
         let success = launchDaemon()
         if success {
@@ -60,23 +54,16 @@ extension XPCService: XPCServiceProtocol {
         reply(success)
     }
     
-    func getEndpointCollection(reply: @escaping (String) -> Void) {
+    func getHelperAppEndpoint(reply: @escaping (NSXPCListenerEndpoint?) -> Void) {
         let service = getHelperToolConnection()
-        service?.getEndpointCollection {
+        service?.getHelperAppEndpoint {
             reply($0)
         }
     }
     
-    func getHelperAppEndpoint(for PID: Int32, reply: @escaping (NSXPCListenerEndpoint?) -> Void) {
+    func setEndpoint(endpoint: NSXPCListenerEndpoint) {
         let service = getHelperToolConnection()
-        service?.getEndpoint(for: PID) { endpoint in
-            reply(endpoint)
-        }
-    }
-    
-    func setEndpoint(endpoint: NSXPCListenerEndpoint, for PID: Int32) {
-        let service = getHelperToolConnection()
-        service?.setEndpoint(endpoint: endpoint, for: PID)
+        service?.setMainAppEndpoint(endpoint)
     }
 }
 

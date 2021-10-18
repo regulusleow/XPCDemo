@@ -8,9 +8,9 @@
 import Foundation
 
 @objc public protocol HelperToolProtocol {
-    func upperCase(str: String, reply: @escaping (String) -> Void)
     func checkDaemonPluse(_ reply: @escaping () -> Void)
-    func setEndpoint(endpoint: NSXPCListenerEndpoint, for PID: Int32)
-    func getEndpoint(for PID: Int32, reply: @escaping (NSXPCListenerEndpoint?) -> Void)
-    func getEndpointCollection(reply: @escaping (String) -> Void)
+    func setMainAppEndpoint(_ endpoint: NSXPCListenerEndpoint?)
+    func getMainAppEndpoint(_ reply: @escaping (NSXPCListenerEndpoint?) -> Void)
+    func setHelperAppEndpoint(_ endpoint: NSXPCListenerEndpoint?)
+    func getHelperAppEndpoint(_ reply: @escaping (NSXPCListenerEndpoint?) -> Void)
 }
