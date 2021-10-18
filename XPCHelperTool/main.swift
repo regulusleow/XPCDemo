@@ -7,5 +7,5 @@
 
 import Foundation
 
-let daemon = HelperEndpointDaemon()
+let daemon = HelperToolService()
 daemon.run()

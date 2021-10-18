@@ -21,11 +21,12 @@
 		F57AD1C226D4DECD000A9BEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F57AD1C126D4DECD000A9BEA /* Assets.xcassets */; };
 		F57AD1C526D4DECD000A9BEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F57AD1C326D4DECD000A9BEA /* Main.storyboard */; };
 		F58A3DA526D8C72000376D19 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58A3DA426D8C72000376D19 /* ServiceManagement.framework */; };
-		F58A3DAB26D8CB7D00376D19 /* HelperEndpointDaemonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58A3DAA26D8CB7D00376D19 /* HelperEndpointDaemonProtocol.swift */; };
-		F58A3DAC26D8CBC100376D19 /* HelperEndpointDaemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58A3DA626D8CA3F00376D19 /* HelperEndpointDaemon.swift */; };
+		F58A3DAB26D8CB7D00376D19 /* HelperToolProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58A3DAA26D8CB7D00376D19 /* HelperToolProtocol.swift */; };
+		F58A3DAC26D8CBC100376D19 /* HelperToolService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58A3DA626D8CA3F00376D19 /* HelperToolService.swift */; };
 		F5AC964526D899E500A96091 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5AC964426D899E500A96091 /* Foundation.framework */; };
 		F5D2422426EF4915006D0694 /* GeneralLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D2422326EF4915006D0694 /* GeneralLibrary.framework */; };
 		F5D2422526EF4915006D0694 /* GeneralLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5D2422326EF4915006D0694 /* GeneralLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F5D3D345271D6E2E00FD6086 /* DemoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D3D344271D6E2E00FD6086 /* DemoService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,13 +108,14 @@
 		F57AD1D126D4DEFE000A9BEA /* com.wjf.XPCService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = com.wjf.XPCService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
 		F57AD1D926D4DEFE000A9BEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F58A3DA426D8C72000376D19 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
-		F58A3DA626D8CA3F00376D19 /* HelperEndpointDaemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperEndpointDaemon.swift; sourceTree = "<group>"; };
-		F58A3DAA26D8CB7D00376D19 /* HelperEndpointDaemonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperEndpointDaemonProtocol.swift; sourceTree = "<group>"; };
+		F58A3DA626D8CA3F00376D19 /* HelperToolService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperToolService.swift; sourceTree = "<group>"; };
+		F58A3DAA26D8CB7D00376D19 /* HelperToolProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperToolProtocol.swift; sourceTree = "<group>"; };
 		F58A3DAD26D8D38200376D19 /* com.wjf.XPCHelperTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = com.wjf.XPCHelperTool.entitlements; sourceTree = "<group>"; };
 		F58A3DAE26D8D38400376D19 /* XPCService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XPCService.entitlements; sourceTree = "<group>"; };
 		F5AC964326D8974F00A96091 /* XPCHelperTool-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XPCHelperTool-Info.plist"; sourceTree = "<group>"; };
 		F5AC964426D899E500A96091 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F5D2422326EF4915006D0694 /* GeneralLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GeneralLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5D3D344271D6E2E00FD6086 /* DemoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,8 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				F58A3DAD26D8D38200376D19 /* com.wjf.XPCHelperTool.entitlements */,
-				F58A3DAA26D8CB7D00376D19 /* HelperEndpointDaemonProtocol.swift */,
-				F58A3DA626D8CA3F00376D19 /* HelperEndpointDaemon.swift */,
+				F58A3DAA26D8CB7D00376D19 /* HelperToolProtocol.swift */,
+				F58A3DA626D8CA3F00376D19 /* HelperToolService.swift */,
 				F527A0D926D896CC009F4B5D /* main.swift */,
 				F5AC964326D8974F00A96091 /* XPCHelperTool-Info.plist */,
 				F527A0B926D89581009F4B5D /* XPCHelperTool-Launchd.plist */,
@@ -194,6 +196,7 @@
 			children = (
 				F57AD1BD26D4DECC000A9BEA /* AppDelegate.swift */,
 				F57AD1BF26D4DECC000A9BEA /* ViewController.swift */,
+				F5D3D344271D6E2E00FD6086 /* DemoService.swift */,
 				F57AD1C126D4DECD000A9BEA /* Assets.xcassets */,
 				F57AD1C326D4DECD000A9BEA /* Main.storyboard */,
 				F57AD1C626D4DECD000A9BEA /* Info.plist */,
@@ -342,8 +345,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F58A3DAC26D8CBC100376D19 /* HelperEndpointDaemon.swift in Sources */,
-				F58A3DAB26D8CB7D00376D19 /* HelperEndpointDaemonProtocol.swift in Sources */,
+				F58A3DAC26D8CBC100376D19 /* HelperToolService.swift in Sources */,
+				F58A3DAB26D8CB7D00376D19 /* HelperToolProtocol.swift in Sources */,
 				F527A0DA26D896CC009F4B5D /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F57AD1C026D4DECC000A9BEA /* ViewController.swift in Sources */,
+				F5D3D345271D6E2E00FD6086 /* DemoService.swift in Sources */,
 				F57AD1BE26D4DECC000A9BEA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,6 +407,7 @@
 				DEVELOPMENT_TEAM = VXULM2TM7T;
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/XPCHelperTool/XPCHelperTool-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"-sectcreate",
@@ -429,6 +434,7 @@
 				DEVELOPMENT_TEAM = VXULM2TM7T;
 				ENABLE_HARDENED_RUNTIME = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/XPCHelperTool/XPCHelperTool-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"-sectcreate",
@@ -578,6 +584,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wjf.XPCDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -603,6 +610,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wjf.XPCDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -625,6 +633,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wjf.XPCService;
 				PRODUCT_NAME = com.wjf.XPCService;
 				SKIP_INSTALL = YES;
@@ -648,6 +657,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wjf.XPCService;
 				PRODUCT_NAME = com.wjf.XPCService;
 				SKIP_INSTALL = YES;

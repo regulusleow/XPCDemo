@@ -16,13 +16,23 @@ class ViewController: NSViewController {
     @IBOutlet var textView: NSTextView!
     @IBOutlet var demoScrollView: NSScrollView!
     
-    private var helperConnection: NSXPCConnection?
+    private var helperAppConnection: NSXPCConnection?
     private var xpcConnection: NSXPCConnection?
+    private var listener: NSXPCListener?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         connectXPCService()
+        
+        listener = NSXPCListener.anonymous()
+        listener?.delegate = self
+        listener?.resume()
+        
+        if let listener = self.listener {
+            let service = getXPCConnection()
+            service?.setEndpoint(endpoint: listener.endpoint, for: ProcessInfo.processInfo.processIdentifier)
+        }
     }
     
     override func viewWillAppear() {
@@ -43,15 +53,21 @@ class ViewController: NSViewController {
         }
         
         let service = getXPCConnection()
-        service?.connectHelperApp(for: runningCapHelperDemo.processIdentifier)
+        service?.getHelperAppEndpoint(for: runningCapHelperDemo.processIdentifier) { [weak self] endpoint in
+            guard let endpoint = endpoint else {
+                self?.log("EndPoint 不存在")
+                return
+            }
+            self?.helperAppConnect(with: endpoint)
+        }
     }
     
     @IBAction func helperDemoAction(_ sender: NSButton) {
-        guard let helperConnection = self.helperConnection else {
+        guard let helperAppConnection = self.helperAppConnection else {
             log("demoConnection is nil")
             return
         }
-        let demoService = helperConnection.remoteObjectProxyWithErrorHandler { [weak self] error in
+        let demoService = helperAppConnection.remoteObjectProxyWithErrorHandler { [weak self] error in
             self?.log("ERROR CONNECTING: \(error)")
         } as? HelperDemoProtocol
         demoService?.helperDemoStr { [weak self] str in
@@ -84,16 +100,49 @@ class ViewController: NSViewController {
     }
 }
 
+extension ViewController: NSXPCListenerDelegate {
+    func listener(_ listener: NSXPCListener, shouldAcceptNewConnection newConnection: NSXPCConnection) -> Bool {
+        newConnection.exportedInterface = NSXPCInterface(with: DemoProtocol.self)
+        newConnection.exportedObject = DemoService()
+        newConnection.resume()
+        
+        return true
+    }
+}
+
 extension ViewController {
+    func helperAppConnect(with endpoint: NSXPCListenerEndpoint) {
+        helperAppConnection = NSXPCConnection(listenerEndpoint: endpoint)
+        helperAppConnection?.remoteObjectInterface = NSXPCInterface(with: HelperDemoProtocol.self)
+        helperAppConnection?.invalidationHandler = { [weak self] in
+            self?.helperAppConnection?.invalidationHandler = nil
+            OperationQueue.main.addOperation {
+                self?.helperAppConnection = nil
+            }
+            self?.log("helperAppConnection invalidated")
+        }
+        helperAppConnection?.interruptionHandler = { [weak self] in
+            self?.log("helperAppConnection interrupted")
+        }
+        helperAppConnection?.resume()
+        
+        let service = helperAppConnection?.remoteObjectProxyWithErrorHandler { [weak self] error in
+            self?.log("连接 HelperDemo 失败: \(error)")
+        } as? HelperDemoProtocol
+        service?.checkHelperDemoConnection { [weak self] result in
+            self?.log(result)
+        }
+    }
+    
     func connectXPCService() {
         if xpcConnection == nil {
             xpcConnection = NSXPCConnection(serviceName: "com.wjf.XPCService")
             xpcConnection?.remoteObjectInterface = NSXPCInterface(with: XPCServiceProtocol.self)
-            xpcConnection?.invalidationHandler = {
-                self.xpcConnection?.invalidationHandler = nil
+            xpcConnection?.invalidationHandler = { [weak self] in
+                self?.xpcConnection?.invalidationHandler = nil
                 OperationQueue.main.addOperation {
-                    self.xpcConnection = nil
-                    print("connection invalidated")
+                    self?.xpcConnection = nil
+                    self?.log("xpc service connection invalidated")
                 }
             }
             xpcConnection?.resume()

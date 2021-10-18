@@ -1,5 +1,5 @@
 //
-//  HelperEndpointDaemon.swift
+//  HelperToolService.swift
 //  XPCDemo
 //
 //  Created by jiafeng wu on 2021/8/27.
@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class HelperEndpointDaemon: NSObject {
+class HelperToolService: NSObject {
     private var daemonListener: NSXPCListener?
     private var endpointDict = [Int32: NSXPCListenerEndpoint]()
     
@@ -23,16 +23,16 @@ class HelperEndpointDaemon: NSObject {
     }
 }
 
-extension HelperEndpointDaemon: NSXPCListenerDelegate {
+extension HelperToolService: NSXPCListenerDelegate {
     func listener(_ listener: NSXPCListener, shouldAcceptNewConnection newConnection: NSXPCConnection) -> Bool {
-        newConnection.exportedInterface = NSXPCInterface(with: HelperEndpointDaemonProtocol.self)
+        newConnection.exportedInterface = NSXPCInterface(with: HelperToolProtocol.self)
         newConnection.exportedObject = self
         newConnection.resume()
         return true
     }
 }
 
-extension HelperEndpointDaemon: HelperEndpointDaemonProtocol {
+extension HelperToolService: HelperToolProtocol {
     func upperCase(str: String, reply: (String) -> Void) {
         let result = str.uppercased()
         reply(result)
@@ -58,7 +58,7 @@ extension HelperEndpointDaemon: HelperEndpointDaemonProtocol {
     }
 }
 
-extension HelperEndpointDaemon {
+extension HelperToolService {
     func filterEndpoint() {
         let runningCapDemo = NSRunningApplication.runningApplications(withBundleIdentifier: "com.wjf.XPCDemo").first
         let runningCapHelperDemo = NSRunningApplication.runningApplications(withBundleIdentifier: "com.wjf.HelperDemo").first

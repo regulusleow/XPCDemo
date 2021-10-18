@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F56CAF8526EF478800A4C054 /* GeneralLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = F56CAF8326EF478800A4C054 /* GeneralLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F5D2421A26EF47DC006D0694 /* HelperDemoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D2421626EF47DC006D0694 /* HelperDemoService.swift */; };
 		F5D2421B26EF47DC006D0694 /* DemoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D2421726EF47DC006D0694 /* DemoProtocol.swift */; };
-		F5D2421C26EF47DC006D0694 /* DemoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D2421826EF47DC006D0694 /* DemoService.swift */; };
 		F5D2421D26EF47DC006D0694 /* HelperDemoProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D2421926EF47DC006D0694 /* HelperDemoProtocol.swift */; };
 /* End PBXBuildFile section */
 
@@ -18,9 +16,7 @@
 		F56CAF8026EF478800A4C054 /* GeneralLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GeneralLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56CAF8326EF478800A4C054 /* GeneralLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneralLibrary.h; sourceTree = "<group>"; };
 		F56CAF8426EF478800A4C054 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F5D2421626EF47DC006D0694 /* HelperDemoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperDemoService.swift; sourceTree = "<group>"; };
 		F5D2421726EF47DC006D0694 /* DemoProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoProtocol.swift; sourceTree = "<group>"; };
-		F5D2421826EF47DC006D0694 /* DemoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoService.swift; sourceTree = "<group>"; };
 		F5D2421926EF47DC006D0694 /* HelperDemoProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperDemoProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,9 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				F5D2421726EF47DC006D0694 /* DemoProtocol.swift */,
-				F5D2421826EF47DC006D0694 /* DemoService.swift */,
 				F5D2421926EF47DC006D0694 /* HelperDemoProtocol.swift */,
-				F5D2421626EF47DC006D0694 /* HelperDemoService.swift */,
 				F56CAF8326EF478800A4C054 /* GeneralLibrary.h */,
 				F56CAF8426EF478800A4C054 /* Info.plist */,
 			);
@@ -144,9 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5D2421B26EF47DC006D0694 /* DemoProtocol.swift in Sources */,
-				F5D2421C26EF47DC006D0694 /* DemoService.swift in Sources */,
 				F5D2421D26EF47DC006D0694 /* HelperDemoProtocol.swift in Sources */,
-				F5D2421A26EF47DC006D0694 /* HelperDemoService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +284,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wjf.GeneralLibrary;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -318,6 +311,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wjf.GeneralLibrary;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

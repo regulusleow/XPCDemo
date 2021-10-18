@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -745,7 +745,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="xpcServiceAction:" target="XfG-lQ-9wD" id="3tw-oC-LNv"/>
+                                            <action selector="mainDemoAction:" target="XfG-lQ-9wD" id="heJ-7h-dNy"/>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zUI-xL-cZz">
@@ -755,7 +755,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="xpcDemoAction:" target="XfG-lQ-9wD" id="KLT-tI-5Cf"/>
+                                            <action selector="mainAppConnectAction:" target="XfG-lQ-9wD" id="LdX-NG-gJL"/>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8aI-R1-uAq">
@@ -765,7 +765,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="getAllEndpoint:" target="XfG-lQ-9wD" id="yqd-bw-XKf"/>
+                                            <action selector="getAllEndpoint:" target="XfG-lQ-9wD" id="FPE-DB-pif"/>
                                         </connections>
                                     </button>
                                 </subviews>

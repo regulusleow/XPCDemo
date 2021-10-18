@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import GeneralLibrary
 
 @objc public class DemoService: NSObject, DemoProtocol {
     @objc public func upperCase(str: String, reply: (String) -> Void) {
@@ -14,10 +15,10 @@ import Foundation
     }
     
     @objc public func demoStr(reply: @escaping (String) -> Void) {
-        reply("这是 XPCDemo 的一个方法")
+        reply("这是 main app 的一个方法")
     }
     
     @objc public func checkConnection(reply: @escaping (String) -> Void) {
-        reply("成功连接 XPCDemo")
+        reply("成功连接 main app")
     }
 }

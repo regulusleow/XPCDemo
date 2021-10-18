@@ -42,10 +42,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F55F74FC26D4F0690020F5D3"
-               BuildableName = "HelperDemo.app"
-               BlueprintName = "HelperDemo"
-               ReferencedContainer = "container:HelperDemo/HelperDemo.xcodeproj">
+               BlueprintIdentifier = "F57AD1B926D4DECC000A9BEA"
+               BuildableName = "XPCDemo.app"
+               BlueprintName = "XPCDemo"
+               ReferencedContainer = "container:XPCDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -56,10 +56,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F57AD1B926D4DECC000A9BEA"
-               BuildableName = "XPCDemo.app"
-               BlueprintName = "XPCDemo"
-               ReferencedContainer = "container:XPCDemo.xcodeproj">
+               BlueprintIdentifier = "F55F74FC26D4F0690020F5D3"
+               BuildableName = "HelperDemo.app"
+               BlueprintName = "HelperDemo"
+               ReferencedContainer = "container:HelperDemo/HelperDemo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

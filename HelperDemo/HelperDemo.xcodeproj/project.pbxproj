@@ -14,7 +14,24 @@
 		F5D2421F26EF4904006D0694 /* GeneralLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D2421E26EF4904006D0694 /* GeneralLibrary.framework */; };
 		F5D2422026EF4904006D0694 /* GeneralLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5D2421E26EF4904006D0694 /* GeneralLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F5D2422226EF490B006D0694 /* GeneralLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D2421E26EF4904006D0694 /* GeneralLibrary.framework */; };
+		F5D3D2B9271D51AA00FD6086 /* HelperXPCService.xpc in Embed XPC Services */ = {isa = PBXBuildFile; fileRef = F5D3D2AE271D51AA00FD6086 /* HelperXPCService.xpc */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F5D3D2C2271D51D000FD6086 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D3D2C1271D51D000FD6086 /* main.swift */; };
+		F5D3D2C9271D51F200FD6086 /* HelperXPCService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D3D2C8271D51F200FD6086 /* HelperXPCService.swift */; };
+		F5D3D2CC271D520000FD6086 /* HelperXPCServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D3D2CB271D520000FD6086 /* HelperXPCServiceProtocol.swift */; };
+		F5D3D31F271D5A1300FD6086 /* GeneralLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D2421E26EF4904006D0694 /* GeneralLibrary.framework */; };
+		F5D3D320271D5A1300FD6086 /* GeneralLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F5D2421E26EF4904006D0694 /* GeneralLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F5D3D335271D608D00FD6086 /* HelperDemoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D3D334271D608D00FD6086 /* HelperDemoService.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F5D3D2B7271D51AA00FD6086 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F55F74F526D4F0690020F5D3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F5D3D2AD271D51AA00FD6086;
+			remoteInfo = HelperXPCService;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		F5D2422126EF4904006D0694 /* Embed Frameworks */ = {
@@ -24,6 +41,28 @@
 			dstSubfolderSpec = 10;
 			files = (
 				F5D2422026EF4904006D0694 /* GeneralLibrary.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5D3D2BA271D51AA00FD6086 /* Embed XPC Services */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/XPCServices";
+			dstSubfolderSpec = 16;
+			files = (
+				F5D3D2B9271D51AA00FD6086 /* HelperXPCService.xpc in Embed XPC Services */,
+			);
+			name = "Embed XPC Services";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5D3D321271D5A1300FD6086 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F5D3D320271D5A1300FD6086 /* GeneralLibrary.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -40,6 +79,13 @@
 		F55F750A26D4F06A0020F5D3 /* HelperDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HelperDemo.entitlements; sourceTree = "<group>"; };
 		F56CAF6426EF301900A4C054 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		F5D2421E26EF4904006D0694 /* GeneralLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GeneralLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5D3D2AE271D51AA00FD6086 /* HelperXPCService.xpc */ = {isa = PBXFileReference; explicitFileType = "wrapper.xpc-service"; includeInIndex = 0; path = HelperXPCService.xpc; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5D3D2B6271D51AA00FD6086 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5D3D2BF271D51AE00FD6086 /* HelperXPCService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HelperXPCService.entitlements; sourceTree = "<group>"; };
+		F5D3D2C1271D51D000FD6086 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		F5D3D2C8271D51F200FD6086 /* HelperXPCService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperXPCService.swift; sourceTree = "<group>"; };
+		F5D3D2CB271D520000FD6086 /* HelperXPCServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperXPCServiceProtocol.swift; sourceTree = "<group>"; };
+		F5D3D334271D608D00FD6086 /* HelperDemoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperDemoService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +98,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F5D3D2AB271D51AA00FD6086 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5D3D31F271D5A1300FD6086 /* GeneralLibrary.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -59,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				F55F74FF26D4F0690020F5D3 /* HelperDemo */,
+				F5D3D2AF271D51AA00FD6086 /* HelperXPCService */,
 				F55F74FE26D4F0690020F5D3 /* Products */,
 				F56CAF6326EF301900A4C054 /* Frameworks */,
 			);
@@ -68,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				F55F74FD26D4F0690020F5D3 /* HelperDemo.app */,
+				F5D3D2AE271D51AA00FD6086 /* HelperXPCService.xpc */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -77,6 +133,7 @@
 			children = (
 				F55F750026D4F0690020F5D3 /* AppDelegate.swift */,
 				F55F750226D4F0690020F5D3 /* ViewController.swift */,
+				F5D3D334271D608D00FD6086 /* HelperDemoService.swift */,
 				F55F750426D4F06A0020F5D3 /* Assets.xcassets */,
 				F55F750626D4F06A0020F5D3 /* Main.storyboard */,
 				F55F750926D4F06A0020F5D3 /* Info.plist */,
@@ -94,6 +151,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F5D3D2AF271D51AA00FD6086 /* HelperXPCService */ = {
+			isa = PBXGroup;
+			children = (
+				F5D3D2BF271D51AE00FD6086 /* HelperXPCService.entitlements */,
+				F5D3D2CB271D520000FD6086 /* HelperXPCServiceProtocol.swift */,
+				F5D3D2C8271D51F200FD6086 /* HelperXPCService.swift */,
+				F5D3D2C1271D51D000FD6086 /* main.swift */,
+				F5D3D2B6271D51AA00FD6086 /* Info.plist */,
+			);
+			path = HelperXPCService;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -105,15 +174,35 @@
 				F55F74FA26D4F0690020F5D3 /* Frameworks */,
 				F55F74FB26D4F0690020F5D3 /* Resources */,
 				F5D2422126EF4904006D0694 /* Embed Frameworks */,
+				F5D3D2BA271D51AA00FD6086 /* Embed XPC Services */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F5D3D2B8271D51AA00FD6086 /* PBXTargetDependency */,
 			);
 			name = HelperDemo;
 			productName = HelperDemo;
 			productReference = F55F74FD26D4F0690020F5D3 /* HelperDemo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		F5D3D2AD271D51AA00FD6086 /* HelperXPCService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5D3D2BD271D51AA00FD6086 /* Build configuration list for PBXNativeTarget "HelperXPCService" */;
+			buildPhases = (
+				F5D3D2AA271D51AA00FD6086 /* Sources */,
+				F5D3D2AB271D51AA00FD6086 /* Frameworks */,
+				F5D3D2AC271D51AA00FD6086 /* Resources */,
+				F5D3D321271D5A1300FD6086 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HelperXPCService;
+			productName = HelperXPCService;
+			productReference = F5D3D2AE271D51AA00FD6086 /* HelperXPCService.xpc */;
+			productType = "com.apple.product-type.xpc-service";
 		};
 /* End PBXNativeTarget section */
 
@@ -126,6 +215,10 @@
 				TargetAttributes = {
 					F55F74FC26D4F0690020F5D3 = {
 						CreatedOnToolsVersion = 12.5.1;
+					};
+					F5D3D2AD271D51AA00FD6086 = {
+						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 					};
 				};
 			};
@@ -143,6 +236,7 @@
 			projectRoot = "";
 			targets = (
 				F55F74FC26D4F0690020F5D3 /* HelperDemo */,
+				F5D3D2AD271D51AA00FD6086 /* HelperXPCService */,
 			);
 		};
 /* End PBXProject section */
@@ -157,6 +251,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F5D3D2AC271D51AA00FD6086 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -165,11 +266,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				F55F750326D4F0690020F5D3 /* ViewController.swift in Sources */,
+				F5D3D335271D608D00FD6086 /* HelperDemoService.swift in Sources */,
 				F55F750126D4F0690020F5D3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F5D3D2AA271D51AA00FD6086 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5D3D2CC271D520000FD6086 /* HelperXPCServiceProtocol.swift in Sources */,
+				F5D3D2C2271D51D000FD6086 /* main.swift in Sources */,
+				F5D3D2C9271D51F200FD6086 /* HelperXPCService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F5D3D2B8271D51AA00FD6086 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F5D3D2AD271D51AA00FD6086 /* HelperXPCService */;
+			targetProxy = F5D3D2B7271D51AA00FD6086 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F55F750626D4F06A0020F5D3 /* Main.storyboard */ = {
@@ -301,6 +421,7 @@
 		F55F750E26D4F06A0020F5D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = HelperDemo/HelperDemo.entitlements;
@@ -313,6 +434,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wjf.HelperDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -322,6 +444,7 @@
 		F55F750F26D4F06A0020F5D3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = HelperDemo/HelperDemo.entitlements;
@@ -334,8 +457,56 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wjf.HelperDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		F5D3D2BB271D51AA00FD6086 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = HelperXPCService/HelperXPCService.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = VXULM2TM7T;
+				ENABLE_HARDENED_RUNTIME = NO;
+				INFOPLIST_FILE = HelperXPCService/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wjf.HelperXPCService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F5D3D2BC271D51AA00FD6086 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = HelperXPCService/HelperXPCService.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = VXULM2TM7T;
+				ENABLE_HARDENED_RUNTIME = NO;
+				INFOPLIST_FILE = HelperXPCService/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wjf.HelperXPCService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -357,6 +528,15 @@
 			buildConfigurations = (
 				F55F750E26D4F06A0020F5D3 /* Debug */,
 				F55F750F26D4F06A0020F5D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5D3D2BD271D51AA00FD6086 /* Build configuration list for PBXNativeTarget "HelperXPCService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5D3D2BB271D51AA00FD6086 /* Debug */,
+				F5D3D2BC271D51AA00FD6086 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
